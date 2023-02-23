@@ -9,7 +9,7 @@ function decodeUnzipData(d) {
 }
 
 function RGBPercentToInt(a, r, g, b) {
-	let color = 0
+	let color = 0;
 	color |= Math.floor(a * 255) << 24;
 	color |= Math.floor(r * 255) << 16;
 	color |= Math.floor(g * 255) << 8;
