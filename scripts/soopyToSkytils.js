@@ -21,7 +21,7 @@ function soopyToSkytils() {
 	var compressedB64 = btoa(String.fromCharCode.apply(null, compressed));
 	
 	navigator.clipboard.writeText("<Skytils-Waypoint-Data>(V1):" + compressedB64);
-	alert(`Copied ${numPoints} waypoints to clipboard!`);
+	alert(`Copied ${numPoints} waypoint(s) to clipboard!`);
 	
 	return;
 }
