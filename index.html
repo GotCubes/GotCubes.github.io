@@ -7,6 +7,8 @@
 <style>
 </style>
 <script src="./scripts/soopyToSkytils.js"></script>
+<script src="./scripts/skytilsToSoopy.js"></script>
+<script src="./scripts/utils.js"></script>
 <script src="./scripts/pako.js"></script>
 <body>
 
@@ -16,6 +18,10 @@ Paste Soopy Data:
 <textarea id="soopyToSkytilsText" rows="20" cols="100"></textarea>
 <br>
 <input id="soopyToSkytilsSubmit" type="button" value="Convert to Skytils Waypoints" onclick="soopyToSkytils();"/>
-
+<br>
+<h1>Skytils Waypoints &rarr; Soopy</h1>
+<input id="skytilsToSoopySubmit" type="button" value="Load Skytils Waypoints from Clipboard" onclick="skytilsToSoopy();"/>
+<br>
+<textarea id="skytilsToSoopyText" rows="20" cols="100"></textarea>
 </body>
 </html>
