@@ -5,23 +5,113 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="">
 <style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+th, td {
+	padding-left: 30px;
+	padding-right: 30px;
+}
 </style>
-<script src="./scripts/soopyToSkytils.js"></script>
-<script src="./scripts/skytilsToSoopy.js"></script>
-<script src="./scripts/utils.js"></script>
-<script src="./scripts/pako.js"></script>
-<body>
+<script type="text/javascript">
+	var auctions = [];
+	var auctionsLoaded = false;
+</script>
+<script type="text/javascript" src="./scripts/getAHData.js"></script>
+<script type="text/javascript" src="./scripts/soopyToSkytils.js"></script>
+<script type="text/javascript" src="./scripts/skytilsToSoopy.js"></script>
+<script type="text/javascript" src="./scripts/coinsPerPetXP.js"></script>
+<script type="text/javascript" src="./scripts/utils.js"></script>
+<script type="text/javascript" src="./scripts/pako.js"></script>
+<body onload="getAHData()">
 
 <h1>Soopy Waypoints &rarr; Skytils</h1>
 Paste Soopy Data:
 <br>
 <textarea id="soopyToSkytilsText" rows="20" cols="100"></textarea>
 <br>
+
 <input id="soopyToSkytilsSubmit" type="button" value="Convert to Skytils Waypoints" onclick="soopyToSkytils();"/>
 <br>
 <h1>Skytils Waypoints &rarr; Soopy</h1>
 <input id="skytilsToSoopySubmit" type="button" value="Load Skytils Waypoints from Clipboard" onclick="skytilsToSoopy();"/>
 <br>
 <textarea id="skytilsToSoopyText" rows="20" cols="100"></textarea>
+<br>
+
+<h1>Pet Levelling Coins per Pet XP Calculator</h1>
+<select name="rarity" id="raritySelect">
+	<option value="COMMON">Common</option>
+	<option value="UNCOMMON">Uncommon</option>
+	<option value="RARE">Rare</option>
+	<option value="EPIC">Epic</option>
+	<option value="LEGENDARY", selected="selected">Legendary</option>
+	<option value="MYTHIC">Mythic</option>
+</select>
+<select name="pet" id="petSelect">
+	<option value="Ammonite">Ammonite</option>
+	<option value="Armadillo">Armadillo</option>
+	<option value="Baby Yeti">Baby Yeti</option>
+	<option value="Bal">Bal</option>
+	<option value="Bat">Bat</option>
+	<option value="Bee">Bee</option>
+	<option value="Black Cat">Black Cat</option>
+	<option value="Blaze">Blaze</option>
+	<option value="Blue Whale">Blue Whale</option>
+	<option value="Chicken">Chicken</option>
+	<option value="Dolphin">Dolphin</option>
+	<option value="Elephant">Elephant</option>
+	<option value="Ender Dragon">Ender Dragon</option>
+	<option value="Enderman">Enderman</option>
+	<option value="Endermite">Endermite</option>
+	<option value="Flying Fish">Flying Fish</option>
+	<option value="Ghoul">Ghoul</option>
+	<option value="Giraffe">Giraffe</option>
+	<option value="Golden Dragon">Golden Dragon</option>
+	<option value="Golem">Golem</option>
+	<option value="Griffin">Griffin</option>
+	<option value="Guardian">Guardian</option>
+	<option value="Horse">Horse</option>
+	<option value="Hound">Hound</option>
+	<option value="Jellyfish">Jellyfish</option>
+	<option value="Jerry">Jerry</option>
+	<option value="Lion">Lion</option>
+	<option value="Magma Cube">Magma Cube</option>
+	<option value="Megalodon">Megalodon</option>
+	<option value="Mithril Golem">Mithril Golem</option>
+	<option value="Monkey">Monkey</option>
+	<option value="Mooshroom Cow">Mooshroom Cow</option>
+	<option value="Ocelot">Ocelot</option>
+	<option value="Parrot">Parrot</option>
+	<option value="Phoenix">Phoenix</option>
+	<option value="Pig">Pig</option>
+	<option value="Pigman">Pigman</option>
+	<option value="Rabbit">Rabbit</option>
+	<option value="Rat">Rat</option>
+	<option value="Reindeer">Reindeer</option>
+	<option value="Rock">Rock</option>
+	<option value="Scatha">Scatha</option>
+	<option value="Sheep">Sheep</option>
+	<option value="Silverfish">Silverfish</option>
+	<option value="Skeleton Horse">Skeleton Horse</option>
+	<option value="Snail">Snail</option>
+	<option value="Snowman">Snowman</option>
+	<option value="Spider">Spider</option>
+	<option value="Spirit">Spirit</option>
+	<option value="Squid">Squid</option>
+	<option value="Tarantula">Tarantula</option>
+	<option value="Tiger">Tiger</option>
+	<option value="Turtle">Turtle</option>
+	<option value="Wisp">Wisp</option>
+	<option value="Wither Skeleton">Wither Skeleton</option>
+	<option value="Wolf">Wolf</option>
+	<option value="Zombie">Zombie</option>
+</select>
+<input id="coinsPerPetXPSubmit" type="button" value="Load" onclick="coinsPerPetXP();"/>
+<br>
+<table id="coinsPerPetXPTable"></table>
+<h1 id="errorTxt"></h1>
+
 </body>
 </html>
